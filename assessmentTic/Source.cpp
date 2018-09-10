@@ -2,14 +2,14 @@
 
 int main()
 { // the board
-	char input = '+';
+	
 	char gamePiece;
-	char board[3][3] = { { '| |', '| |', '| |',},{ '| |', '| |', '| |',}, { '| |', '| |', '| |',} };
+	char board[3][3] = { { ' ', ' ', ' '},{ ' ', ' ', ' '}, { ' ', ' ', ' '} };
 	int choicePlace = 0;
 	int X = 0;
 	int O = 0;
 
-	while (input == '+')
+	
 	{
 		std::cout << " This is a tic tac toe game pleas use the #pad as the game board" << std::endl;
 		// gets rid of every thing on the screen.
@@ -26,8 +26,8 @@ int main()
 			// stops a spot from being used two times.
 			std::cin >> choicePlace;
 			X = (choicePlace - 1) / 3;
-			O = (choicePlace + 2) % 3;
-			if (board[X][O] != '| |')
+			O = ((choicePlace + 2) % 3);
+			if (board[X][O] != ' ')
 			{
 				std::cout << " Try agein this spot has been taken." << std::endl;
 			}
@@ -37,20 +37,21 @@ int main()
 			}
 		}
 		X = (choicePlace - 1) / 3;
-		O = (choicePlace + 2) % 3;
+		O = ((choicePlace + 2) % 3);
 		board[X][O] = gamePiece;
 		
 		for (int j = 2; j >= 0; j--)
 		{
-			for (int k = 2; k >= 0; k++)
+			for (int k = 0; k <= 2; k++)
 			{
-				std::cout << " |< " << board[X][O] << ">|";
+				std::cout << " |< " << board[j][k] << ">|";
 				if (6 % (k + 3) == 1)
 				{
 					std::cout << std::endl;
 				}
 			}
 		}
+		// how to win
 		if (board[0][0] == board[1][0] && board[2][0] == board[1][0] && board[0][0] != ' ')
 		{
 			std::cout << board[0][0] << " wins!!!" << std::endl;
